@@ -1,0 +1,143 @@
+
+.table-wrapper {
+	margin: 30px auto;
+    background: #fff;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+   
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+	height: 30px;
+	font-weight: bold;
+	font-size: 12px;
+	text-shadow: none;
+	min-width: 100px;
+	border-radius: 50px;
+	line-height: 13px;
+}
+.table-title .add-new i {
+	margin-right: 4px;
+}
+table{
+	border-collapse: collapse;
+ 	width: 100%;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    text-align: left;
+}
+table.table td a {
+	cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+	min-width: 24px;
+} 
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+	margin-right: -1px;
+    position: relative;
+    top: 3px;
+} 
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+	border-color: #f50000;
+}
+table.table td .add {
+	display: none;
+}
+
+.footer {
+   position: fixed;
+   bottom: 0px;
+   width: 100%;
+   background-color: #00633b;
+   color: #ffffff80;
+   text-align: center;
+   padding: 10px;
+}
+
+/*==== css prodi ==== */
+table#home th, td  {
+  border: 1px solid black;
+  line-height: 1;
+}
+table#home h5{
+  font-family: cambria;
+  font-size: 12px; 
+}
+table#home i{
+  font-family: cambria;
+  font-size: 10px;
+  
+}
+.judul{
+  font-weight: bold;
+}
+i{
+  font-family: cambria;
+  font-size: 10px; 
+}
+td#t1{
+  font-family: cambria;
+  font-size: 12px;
+  text-align:center;
+  vertical-align: top;
+  padding: 5px 10px 10px 10px;
+  font-weight: bold;
+}
+
+table#noitalic{
+  font-family: cambria;
+  font-size:8px;  
+}
+table#noitalic th{
+  padding-left: 10px;
+  font-size: 9px;
+}
+td ol#b{
+  font-weight: bold;
+  margin: 0px;
+  font-size: 9px;
+  padding-left: 32px;
+}
+table#italic{
+  font-style: italic;
+  font-family: cambria;
+  font-size:8px;  
+}
+table#italic th{
+  padding-left: 10px;
+  font-size: 9px;
+}
+td ol#b{
+  font-weight: bold;
+  margin: 0px;
+  font-size: 9px;
+  padding-left: 32px;
+}
