@@ -31,18 +31,19 @@ class C_mahasiswa extends CI_Controller {
 		$this->load->view('v_mahasiswa/template_m', $data);
 	}
 
-	function simpan_data_diri()
-		{
-			
-			$nim = $this->input->post('nim');
-			$nama = $this->input->post('nama');
-			$ttl = $this->input->post('ttl');
-			$no_ijazah = $this->input->post('nsi');
-			$masuk = $this->input->post('masuk');
-			$lulus = $this->input->post('lulus'); 
-			$gelar = $this->input->post('gelar');
-			$this->M_datadiri->simpan($nim,$nama,$ttl,$no_ijazah,$masuk,$lulus,$gelar);
-			redirect('C_mahasiswa/index');
+	public function simpan_data_diri()
+	{
+		$user = $this->session->userdata('auth');	
+		$nim = $this->input->post('nim');
+		$nama = $this->input->post('nama');
+		$ttl = $this->input->post('ttl');
+		$no_ijazah = $this->input->post('nsi');
+		$masuk = $this->input->post('masuk');
+		$lulus = $this->input->post('lulus'); 
+		$gelar = $this->input->post('gelar');
+		$id_user = $user[0]->id;
+		$this->M_datadiri->simpan($nim,$nama,$ttl,$no_ijazah,$masuk,$lulus,$gelar,$id_user);
+		redirect('C_mahasiswa/index');
 	}
 }
 

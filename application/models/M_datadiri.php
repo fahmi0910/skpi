@@ -11,9 +11,9 @@ class M_datadiri extends CI_Model {
 		return $hasil;
 	}
 
-	function simpan($nim,$nama,$ttl,$no_ijazah,$masuk,$lulus,$gelar)
+	function simpan($nim,$nama,$ttl,$no_ijazah,$masuk,$lulus,$gelar,$id_user)
 	{
-		$hasil=$this->db->query("INSERT INTO identitas_diri (nim,nama,ttl,no_ijazah,masuk,lulus,gelar) VALUES ('$nim','$nama','$ttl','$no_ijazah','$masuk','$lulus','$gelar')");
+		$hasil=$this->db->query("INSERT INTO identitas_diri (nim,nama,ttl,no_ijazah,masuk,lulus,gelar,id_user) VALUES ('$nim','$nama','$ttl','$no_ijazah','$masuk','$lulus','$gelar','$id_user')");
 		return $hasil;
 	
 	}

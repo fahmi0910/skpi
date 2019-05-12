@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v12.5.1 (64 bit)
-MySQL - 5.7.9 : Database - skpi
+SQLyog Ultimate v12.5.1 (32 bit)
+MySQL - 5.5.20-log : Database - skpi
 *********************************************************************
 */
 
@@ -21,20 +21,24 @@ USE `skpi`;
 DROP TABLE IF EXISTS `identitas_diri`;
 
 CREATE TABLE `identitas_diri` (
-  `nim` varchar(20) NOT NULL,
+  `id` int(20) NOT NULL AUTO_INCREMENT,
   `nama` varchar(30) DEFAULT NULL,
   `ttl` date DEFAULT NULL,
   `no_ijazah` varchar(30) DEFAULT NULL,
   `masuk` date DEFAULT NULL,
   `lulus` date DEFAULT NULL,
   `gelar` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`nim`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `identitas_diri_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `identitas_diri` */
 
-insert  into `identitas_diri`(`nim`,`nama`,`ttl`,`no_ijazah`,`masuk`,`lulus`,`gelar`) values 
-('2016.02623.31.1496','Fahmi Muhammad','1994-05-10','13215/1235.1545','2016-07-15','2019-08-03','Ahli Madya (A.md)');
+insert  into `identitas_diri`(`id`,`nama`,`ttl`,`no_ijazah`,`masuk`,`lulus`,`gelar`,`id_user`) values 
+(1,'fahmi',NULL,NULL,NULL,NULL,NULL,26),
+(2,'fani',NULL,NULL,NULL,NULL,NULL,27);
 
 /*Table structure for table `karya_ilmiah` */
 
@@ -89,12 +93,12 @@ CREATE TABLE `kepanitiaan` (
   `sebagai` varchar(20) DEFAULT NULL,
   `bukti` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `kepanitiaan` */
 
 insert  into `kepanitiaan`(`no`,`nama`,`waktu`,`penyelenggara`,`sebagai`,`bukti`) values 
-(1,'Lomba foto have funnnn','Januari 2017','Unjani ','CP','Lomba foto have funnnn.jpg'),
+(1,'Lomba foto have funnnn','Januari 2017','Unjani ','CP','Lomba foto have funnnn.JPG'),
 (2,'seminar apalah','Februari 2017','UGM','aaaaaa','seminar apalah.jpg');
 
 /*Table structure for table `magang` */
@@ -109,14 +113,14 @@ CREATE TABLE `magang` (
   `berkas` varchar(50) DEFAULT NULL,
   `bukti` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `magang` */
 
 insert  into `magang`(`no`,`tempat`,`waktu`,`penyelenggara`,`berkas`,`bukti`) values 
 (10,'oke','Juli 2018  - Agustus 2018','Unjani YK','ada','1.jpg'),
-(12,'5','6','7','8','5.jpg'),
-(11,'2','s','d','f',',.jpg');
+(11,'2','s','d','f',',.jpg'),
+(12,'5','6','7','8','5.jpg');
 
 /*Table structure for table `mahasiswa` */
 
@@ -125,14 +129,14 @@ DROP TABLE IF EXISTS `mahasiswa`;
 CREATE TABLE `mahasiswa` (
   `nim` char(18) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `ttl` date DEFAULT NULL,
-  `username` varchar(8) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `prodi` varchar(50) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`nim`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `mahasiswa` */
+
+insert  into `mahasiswa`(`nim`,`nama`,`status`) values 
+('2016.02623.31.1496','Fahmi Muhammad','terisi');
 
 /*Table structure for table `organisasi` */
 
@@ -146,7 +150,7 @@ CREATE TABLE `organisasi` (
   `berkas` varchar(50) DEFAULT NULL,
   `bukti` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 /*Data for the table `organisasi` */
 
@@ -154,7 +158,8 @@ insert  into `organisasi`(`no`,`nama`,`periode`,`divisi`,`berkas`,`bukti`) value
 (11,'a','b','b','d','a.jpg'),
 (12,'aaa','bbbb','aaaa','ttttt','aaa.jpg'),
 (13,'fff','ggg','hhh','jjj','fff.jpg'),
-(14,'potret','2016-2019','Potrait','f','potret.jpg');
+(14,'potret','2016-2019','Potrait','f','potret.jpg'),
+(15,'sds','asda','aasdsd','asdsa','sds.JPG');
 
 /*Table structure for table `prestasi` */
 
@@ -167,15 +172,18 @@ CREATE TABLE `prestasi` (
   `penyelenggara` varchar(100) DEFAULT NULL,
   `atas_nama` varchar(100) DEFAULT NULL,
   `bukti` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`no`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+  `id_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`no`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `prestasi` */
 
-insert  into `prestasi`(`no`,`prestasi`,`waktu`,`penyelenggara`,`atas_nama`,`bukti`) values 
-(22,'ooo','2019-05-14','ppp','lll','ooo.jpg'),
-(23,'mmm','2019-05-21','nnnn','bbbb','mmm.jpg'),
-(21,'aaaa','2019-05-14','bbb','cccc','aaaa.jpg');
+insert  into `prestasi`(`no`,`prestasi`,`waktu`,`penyelenggara`,`atas_nama`,`bukti`,`id_user`) values 
+(21,'aaaa','2019-05-14','bbb','cccc','aaaa.jpg',NULL),
+(22,'ooo','2019-05-14','ppp','lll','ooo.jpg',NULL),
+(23,'mmm','2019-05-21','nnnn','bbbb','mmm.jpg',NULL);
 
 /*Table structure for table `seminar` */
 
@@ -189,14 +197,30 @@ CREATE TABLE `seminar` (
   `status` varchar(30) DEFAULT NULL,
   `bukti` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`no`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `seminar` */
 
 insert  into `seminar`(`no`,`nama`,`penyelenggara`,`waktu`,`status`,`bukti`) values 
-(9,'bbb','sss','2019-05-13','ddd','bbb.jpg'),
+(7,'asdsadsa','aaaa','2019-05-14','bbbb','asdsadsa.jpg'),
 (8,'aaa','bbb','2019-05-22','vvv','aaa.jpg'),
-(7,'asdsadsa','aaaa','2019-05-14','bbbb','asdsadsa.jpg');
+(9,'bbb','sss','2019-05-13','ddd','bbb.jpg');
+
+/*Table structure for table `t_mahasiswa` */
+
+DROP TABLE IF EXISTS `t_mahasiswa`;
+
+CREATE TABLE `t_mahasiswa` (
+  `NIM` char(17) NOT NULL,
+  `Nama` varchar(50) DEFAULT NULL,
+  `ttl` date DEFAULT NULL,
+  `nsi` varchar(10) DEFAULT NULL,
+  `masuk` date DEFAULT NULL,
+  `lulus` date DEFAULT NULL,
+  PRIMARY KEY (`NIM`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `t_mahasiswa` */
 
 /*Table structure for table `t_user` */
 
@@ -208,15 +232,20 @@ CREATE TABLE `t_user` (
   `password` varchar(20) DEFAULT NULL,
   `level` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 /*Data for the table `t_user` */
 
 insert  into `t_user`(`id`,`username`,`password`,`level`) values 
 (1,'admin','admin','a_prodi'),
-(2,'fahmi','fahmi','mahasiswa'),
 (3,'cahyo','cahyo','a_sistem'),
-(4,'ayu','ayu','mahasiswa');
+(21,'31.1496','fahmi','mahasiswa'),
+(22,'31.1493','adit','mahasiswa'),
+(23,'31.1496','fahmi','mahasiswa'),
+(24,'31.1492','fani','mahasiswa'),
+(25,'31.1496','fahmi','mahasiswa'),
+(26,'31.1496i','fahmi','mahasiswa'),
+(27,'31.1497','fani','mahasiswa');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
