@@ -34,7 +34,7 @@ class C_prestasi extends CI_Controller {
 			// $data['page'] = 'masukan';
 			// $this->load->view('template',$data);
 			//upload file
-			$config['file_name'] = $this->input->post('prestasi', true);
+			$config['file_name'] = $this->input->post('prestasi', true).$this->input->post('nama');
 			$config['upload_path'] = './assets/upload/';
 			$config['allowed_types'] = 'jpg|png';
 			$config['overwrite']= true;

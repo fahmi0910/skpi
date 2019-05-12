@@ -24,6 +24,7 @@ class C_login extends CI_Controller {
 
 		if($ceklogin){
 			foreach($ceklogin as $row);
+			$this->session->set_userdata('auth', $ceklogin);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('level', $row->level);
 

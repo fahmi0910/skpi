@@ -53,7 +53,7 @@
             </tbody>
         </table>
     </div>
-    <a class="btn btn-info" href="<?php echo base_url();?>C_mahasiswa/input_m" role="button">Edit</a>
+    <a class="btn btn-info" href="<?php echo base_url();?>C_mahasiswa/input_m" role="button">Tambah</a>
     </div>
 </div>  
  <!-- Js table -->

@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_datadiri extends CI_Model {
 
-	function ambil_data()
+	function ambil_data($id)
 	{	
-		$hasil=$this->db->query("SELECT * FROM identitas_diri");
+
+		$hasil=$this->db->query("SELECT * FROM identitas_diri  WHERE id_user = ". $id);
+		
 		return $hasil;
 	}
 

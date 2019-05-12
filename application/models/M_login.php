@@ -5,7 +5,7 @@ class M_login extends CI_Model {
 
 	function login($user,$pass){
 
-		$this->db->select('username,password,level');
+		$this->db->select('*');
 		$this->db->from('t_user');
 		$this->db->where('username',$user);
 		$this->db->where('password',$pass);

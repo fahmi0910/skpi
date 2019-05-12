@@ -17,8 +17,10 @@ class C_mahasiswa extends CI_Controller {
 
 	public function index()
 	{
+
+		$user = $this->session->userdata('auth');
 		$data = array();
-		$data['ambil_data']=$this->M_datadiri->ambil_data();
+		$data['ambil_data']=$this->M_datadiri->ambil_data($user[0]->id);
 		$data['page'] = 'v_mahasiswa/identitas';
 		$this->load->view('v_mahasiswa/template_m', $data);
 	}
