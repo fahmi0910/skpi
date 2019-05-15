@@ -21,7 +21,7 @@ USE `skpi`;
 DROP TABLE IF EXISTS `identitas_diri`;
 
 CREATE TABLE `identitas_diri` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `nim` varchar(20) NOT NULL,
   `nama` varchar(30) DEFAULT NULL,
   `ttl` date DEFAULT NULL,
   `no_ijazah` varchar(30) DEFAULT NULL,
@@ -29,16 +29,138 @@ CREATE TABLE `identitas_diri` (
   `lulus` date DEFAULT NULL,
   `gelar` varchar(100) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `prodi` enum('D3-Management Informatika','S1 - Teknik Informatika') DEFAULT NULL,
+  `id_t_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`nim`),
   KEY `id_user` (`id_user`),
-  CONSTRAINT `identitas_diri_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  KEY `id_t_user` (`id_t_user`),
+  CONSTRAINT `identitas_diri_ibfk_1` FOREIGN KEY (`id_t_user`) REFERENCES `t_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `identitas_diri` */
 
-insert  into `identitas_diri`(`id`,`nama`,`ttl`,`no_ijazah`,`masuk`,`lulus`,`gelar`,`id_user`) values 
-(1,'fahmi',NULL,NULL,NULL,NULL,NULL,26),
-(2,'fani',NULL,NULL,NULL,NULL,NULL,27);
+insert  into `identitas_diri`(`nim`,`nama`,`ttl`,`no_ijazah`,`masuk`,`lulus`,`gelar`,`id_user`,`prodi`,`id_t_user`) values 
+('1','fahmi',NULL,NULL,NULL,NULL,NULL,26,NULL,NULL),
+('2','fani',NULL,NULL,NULL,NULL,NULL,27,NULL,NULL);
+
+/*Table structure for table `identitas_diri_karya_ilmiah` */
+
+DROP TABLE IF EXISTS `identitas_diri_karya_ilmiah`;
+
+CREATE TABLE `identitas_diri_karya_ilmiah` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(20) DEFAULT NULL,
+  `no_karya_ilmiah` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_karya_ilmiah` (`no_karya_ilmiah`),
+  CONSTRAINT `identitas_diri_karya_ilmiah_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_karya_ilmiah_ibfk_2` FOREIGN KEY (`no_karya_ilmiah`) REFERENCES `karya_ilmiah` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_karya_ilmiah` */
+
+/*Table structure for table `identitas_diri_kehalian` */
+
+DROP TABLE IF EXISTS `identitas_diri_kehalian`;
+
+CREATE TABLE `identitas_diri_kehalian` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(20) DEFAULT NULL,
+  `no_keahlian` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_keahlian` (`no_keahlian`),
+  CONSTRAINT `identitas_diri_kehalian_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_kehalian_ibfk_2` FOREIGN KEY (`no_keahlian`) REFERENCES `keahlian` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_kehalian` */
+
+/*Table structure for table `identitas_diri_kepanitiaan` */
+
+DROP TABLE IF EXISTS `identitas_diri_kepanitiaan`;
+
+CREATE TABLE `identitas_diri_kepanitiaan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(20) DEFAULT NULL,
+  `no_kepanitiaan` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_kepanitiaan` (`no_kepanitiaan`),
+  CONSTRAINT `identitas_diri_kepanitiaan_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_kepanitiaan_ibfk_2` FOREIGN KEY (`no_kepanitiaan`) REFERENCES `kepanitiaan` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_kepanitiaan` */
+
+/*Table structure for table `identitas_diri_magang` */
+
+DROP TABLE IF EXISTS `identitas_diri_magang`;
+
+CREATE TABLE `identitas_diri_magang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(20) DEFAULT NULL,
+  `no_magang` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_magang` (`no_magang`),
+  CONSTRAINT `identitas_diri_magang_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_magang_ibfk_2` FOREIGN KEY (`no_magang`) REFERENCES `magang` (`no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_magang` */
+
+/*Table structure for table `identitas_diri_organisasi` */
+
+DROP TABLE IF EXISTS `identitas_diri_organisasi`;
+
+CREATE TABLE `identitas_diri_organisasi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(20) DEFAULT NULL,
+  `no_organisasi` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_organisasi` (`no_organisasi`),
+  CONSTRAINT `identitas_diri_organisasi_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_organisasi_ibfk_2` FOREIGN KEY (`no_organisasi`) REFERENCES `organisasi` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_organisasi` */
+
+/*Table structure for table `identitas_diri_prestasi` */
+
+DROP TABLE IF EXISTS `identitas_diri_prestasi`;
+
+CREATE TABLE `identitas_diri_prestasi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(24) DEFAULT NULL,
+  `no_prestasi` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_prestasi` (`no_prestasi`),
+  CONSTRAINT `identitas_diri_prestasi_ibfk_2` FOREIGN KEY (`no_prestasi`) REFERENCES `prestasi` (`no`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_prestasi_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_prestasi` */
+
+/*Table structure for table `identitas_diri_seminar` */
+
+DROP TABLE IF EXISTS `identitas_diri_seminar`;
+
+CREATE TABLE `identitas_diri_seminar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identitas_diri_nim` varchar(20) DEFAULT NULL,
+  `no_seminar` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `identitas_diri_nim` (`identitas_diri_nim`),
+  KEY `no_seminar` (`no_seminar`),
+  CONSTRAINT `identitas_diri_seminar_ibfk_1` FOREIGN KEY (`identitas_diri_nim`) REFERENCES `identitas_diri` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `identitas_diri_seminar_ibfk_2` FOREIGN KEY (`no_seminar`) REFERENCES `seminar` (`no`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `identitas_diri_seminar` */
 
 /*Table structure for table `karya_ilmiah` */
 
@@ -174,8 +296,7 @@ CREATE TABLE `prestasi` (
   `bukti` varchar(100) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`no`),
-  KEY `id_user` (`id_user`),
-  CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `prestasi` */
@@ -184,6 +305,29 @@ insert  into `prestasi`(`no`,`prestasi`,`waktu`,`penyelenggara`,`atas_nama`,`buk
 (21,'aaaa','2019-05-14','bbb','cccc','aaaa.jpg',NULL),
 (22,'ooo','2019-05-14','ppp','lll','ooo.jpg',NULL),
 (23,'mmm','2019-05-21','nnnn','bbbb','mmm.jpg',NULL);
+
+/*Table structure for table `prodi` */
+
+DROP TABLE IF EXISTS `prodi`;
+
+CREATE TABLE `prodi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `izin` text,
+  `nama` varchar(64) DEFAULT NULL,
+  `prodi` varchar(32) DEFAULT NULL,
+  `jenis_dan_program` varchar(128) DEFAULT NULL,
+  `jenjang` varchar(24) DEFAULT NULL,
+  `persyaratan` text,
+  `sertifikat_akreditasi` text,
+  `akreditasi` varchar(32) DEFAULT NULL,
+  `lama_studi` varchar(24) DEFAULT NULL,
+  `bahasa` varchar(24) DEFAULT NULL,
+  `sistem_penilaian` varchar(128) DEFAULT NULL,
+  `jenis_lanjutan` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `prodi` */
 
 /*Table structure for table `seminar` */
 
@@ -205,22 +349,6 @@ insert  into `seminar`(`no`,`nama`,`penyelenggara`,`waktu`,`status`,`bukti`) val
 (7,'asdsadsa','aaaa','2019-05-14','bbbb','asdsadsa.jpg'),
 (8,'aaa','bbb','2019-05-22','vvv','aaa.jpg'),
 (9,'bbb','sss','2019-05-13','ddd','bbb.jpg');
-
-/*Table structure for table `t_mahasiswa` */
-
-DROP TABLE IF EXISTS `t_mahasiswa`;
-
-CREATE TABLE `t_mahasiswa` (
-  `NIM` char(17) NOT NULL,
-  `Nama` varchar(50) DEFAULT NULL,
-  `ttl` date DEFAULT NULL,
-  `nsi` varchar(10) DEFAULT NULL,
-  `masuk` date DEFAULT NULL,
-  `lulus` date DEFAULT NULL,
-  PRIMARY KEY (`NIM`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `t_mahasiswa` */
 
 /*Table structure for table `t_user` */
 

@@ -27,6 +27,10 @@
 .table-title .add-new i {
 	margin-right: 4px;
 }
+/*content*/
+.container{
+  margin-bottom: 60px;
+}
 table{
 	border-collapse: collapse;
  	width: 100%;
@@ -115,30 +119,39 @@ td#t1{
 
 table#noitalic{
   font-family: cambria;
-  font-size:8px;  
+    
 }
 table#noitalic th{
   padding-left: 10px;
-  font-size: 9px;
+  
 }
 td ol#b{
   font-weight: bold;
   margin: 0px;
-  font-size: 9px;
   padding-left: 32px;
 }
 table#italic{
   font-style: italic;
   font-family: cambria;
-  font-size:8px;  
+    
 }
 table#italic th{
   padding-left: 10px;
-  font-size: 9px;
+  
 }
 td ol#b{
   font-weight: bold;
   margin: 0px;
-  font-size: 9px;
   padding-left: 32px;
+} 
+/*css format skpi*/
+.skpi {
+  text-align: center;
+  font-family: cambria;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: top;
+  padding: 5px 10px 10px 10px;
+  font-weight: bold;
 }
+
