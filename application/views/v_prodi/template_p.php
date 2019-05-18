@@ -30,6 +30,9 @@
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_prodi/index">Identitas Penyelenggara <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
+	        <a class="nav-link" href="<?php echo base_url(); ?>management_prodi/index">Management Prodi<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_prodi/kualifikasi">Kualifikasi dan Hasil</a>
 	      </li>
 	      <li class="nav-item">

@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (!function_exists('dd')) {
     function dd()
     {
@@ -9,18 +9,21 @@ if (!function_exists('dd')) {
                 print_r($arg);
                 echo '</pre>';
                 echo '<hr>';
-            }else if(is_object($args)){
+            } elseif (is_object($args)) {
                 echo '<pre>';
                 echo $arg;
                 echo '</pre>';
                 echo '<hr>';
-            }else{
+            } elseif ($args) {
                 echo '<pre>';
-                print_r($args);
+                print_r($arg);
                 echo '</pre>';
+                echo '<hr>';
+            } else {
+                echo $arg;
                 echo '<hr>';
             }
         }
         die();
     }
-} ?>
+}
