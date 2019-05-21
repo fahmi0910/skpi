@@ -48,7 +48,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class CI_Model
 {
-
+    protected $condition;
     /**
      * Class constructor
      *
@@ -76,8 +76,13 @@ class CI_Model
         return get_instance()->$key;
     }
 
-    public function insert($data)
+    public function insert($data, $addcolumn = null)
     {
+        if ($addcolumn) {
+            foreach ($addcolumn as $index => $value) {
+                $data[$index] = $value;
+            }
+        }
         $result = $this->db->insert($this->table, $data);
 
         return $result;
@@ -85,12 +90,15 @@ class CI_Model
 
     public function get($column = '*')
     {
-        $result = $this->db->select($column)->from($this->table)->get();
+        $result = $this->db->select($column)->from($this->table);
+        if ($this->condition) {
+            $result = $this->db->where($this->condition);
+        }
 
-        return $result->result();
+        return $result->get()->result();
     }
 
-    public function find($id, $column = '*', $condition  ='id')
+    public function find($id, $condition  ='id', $column = '*')
     {
         $result = $this->db->select($column)->from($this->table)->where($condition, $id)->get();
 
@@ -109,5 +117,11 @@ class CI_Model
         $result = $this->db->where($condition, $id)->delete($this->table);
 
         return $result;
+    }
+    
+    public function where(array $condition)
+    {
+        $this->condition = $condition;
+        return $this;
     }
 }

@@ -21,41 +21,42 @@
 
                 </tr>
             </thead>
-            <tbody>                
-                   <?php
-                        foreach($ambil_data->result_array() as $i):
-                            $nama=$i['nama'];
-                            $ttl=$i['ttl'];
-                            $nim=$i['nim'];
-                            $nsi=$i['no_ijazah'];
-                            $masuk=$i['masuk'];
-                            $lulus=$i['lulus'];
-                            $gelar=$i['gelar'];
-                       
-                        
-                    ?>
+            <tbody>
+                <?php foreach ($data_diri as $value): ?>
+                    
                     <tr>
-                        <td><?php echo $nama; ?></td>
-                        <td><?php echo $ttl; ?></td>
-                        <td><?php echo $nim; ?></td>
-                        <td><?php echo $nsi; ?></td>
-                        <td><?php echo $masuk; ?></td>
-                        <td><?php echo $lulus; ?></td>
-                        <td><?php echo $gelar; ?></td>
+                        <td><?= $value->nama; ?></td>
+                        <td><?= $value->ttl; ?></td>
+                        <td><?= $value->nim; ?></td>
+                        <td><?= $value->no_ijazah; ?></td>
+                        <td><?= $value->masuk; ?></td>
+                        <td><?= $value->lulus; ?></td>
+                        <td><?= $value->gelar; ?></td>
                         <td>
-                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        </a>
-                    </td>
-
+                        <div class="dropdown _action">
+                          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-cog"></i>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                              <a class="btn-block" href="<?= base_url() ?>C_mahasiswa/edit/<?= $value->nim ?>"> Edit</a>
+                            </li>
+                            <li class="dropdown-item">
+                              <a class="btn-block" onclick="return confirm('Yakin Mau Hapus?')"
+                              href="<?= base_url() ?>C_mahasiswa/hapus_data_diri/<?= $value->nim ?>"> Hapus</a>
+                            </li>
+                          </ul>
+                        </td>
                     </tr>
-                      <?php endforeach;?>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>
-    <a class="btn btn-info" href="<?php echo base_url();?>C_mahasiswa/input_m" role="button">Tambah</a>
+    <?php if (!$data_diri): ?>
+      <a class="btn btn-info" href="<?php echo base_url();?>C_mahasiswa/input_m" role="button">Tambah</a>
+    <?php endif ?>
     </div>
-</div>  
+</div>
  <!-- Js table -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

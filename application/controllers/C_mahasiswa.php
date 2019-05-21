@@ -7,7 +7,7 @@ class C_mahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_datadiri');
-
+        $this->load->model('M_prodi');
         if ($this->session->userdata('level')!="mahasiswa") {
             redirect(C_login/index);
         }
@@ -17,7 +17,7 @@ class C_mahasiswa extends CI_Controller
     {
         $user = $this->session->userdata('auth');
         $data = array();
-        $data['ambil_data']=$this->M_datadiri->ambil_data($user[0]->id);
+        $data['data_diri'] = $this->M_datadiri->where(['id_user' => $user[0]->id])->get();
         $data['page'] = 'v_mahasiswa/identitas';
         $this->load->view('v_mahasiswa/template_m', $data);
     }
@@ -26,22 +26,40 @@ class C_mahasiswa extends CI_Controller
     {
         $data = array();
         $data['page'] = 'v_mahasiswa/input_m';
+        $data['prodi'] = $this->M_prodi->get('id, prodi');
         $this->load->view('v_mahasiswa/template_m', $data);
     }
 
     public function simpan_data_diri()
     {
-        $user = $this->session->userdata('auth');
-        $nim = $this->input->post('nim');
-        $nama = $this->input->post('nama');
-        $ttl = $this->input->post('ttl');
-        $no_ijazah = $this->input->post('nsi');
-        $masuk = $this->input->post('masuk');
-        $lulus = $this->input->post('lulus');
-        $gelar = $this->input->post('gelar');
-        $id_user = $this->session->userdata('auth')[0]->id;
-        $this->M_datadiri->simpan($nim, $nama, $ttl, $no_ijazah, $masuk, $lulus, $gelar, $user_id);
+        $this->M_datadiri->insert($_REQUEST, [
+            'id_user' => $this->session->userdata('auth')[0]->id
+        ]);
+
         redirect('C_mahasiswa/index');
+    }
+    
+    public function edit($id)
+    {
+        $data = array();
+        $data['page'] = 'v_mahasiswa/edit_m';
+        $data['data_diri'] = $this->M_datadiri->find($id, 'nim');
+        $data['prodi'] = $this->M_prodi->get('id, prodi');
+        
+        $this->load->view('v_mahasiswa/template_m', $data);
+    }
+    public function update_data_diri($id)
+    {
+        $this->M_datadiri->updateData($id, $_REQUEST, 'nim');
+        
+        redirect('C_mahasiswa');
+    }
+    
+    public function hapus_data_diri($id)
+    {
+        $this->M_datadiri->delete($id, 'nim');
+        
+        redirect('C_mahasiswa');
     }
 }
 
