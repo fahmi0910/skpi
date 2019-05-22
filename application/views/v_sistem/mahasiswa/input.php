@@ -15,16 +15,10 @@
                     <input type="text" class="form-control" name="password" required>
                  </div> 
                 </div>
-                <div class="form-group row">
-                 <label for="inputPassword" class="col-sm-2">nama</label>
-                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nama" required>
-                 </div> 
-                </div>
                 
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary" name="submit" value="kirim">Simpan</button>
+                        <button type="submit" class="btn btn-primary" >Simpan</button>
                         <button type="button" onclick="history.back()" class="btn btn-danger">Batal</button>
                     </div>
                 </div>

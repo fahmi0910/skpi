@@ -1,4 +1,5 @@
 <?php
+
 if (!function_exists('dd')) {
     function dd()
     {
@@ -25,5 +26,13 @@ if (!function_exists('dd')) {
             }
         }
         die();
+    }
+}
+
+if (!function_exists('auth')) {
+    function auth()
+    {
+        $ci=& get_instance();
+        return $ci->session->userdata('auth')[0];
     }
 }

@@ -1,37 +1,38 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_sistem extends CI_Controller {
+class C_sistem extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_sistem');
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_sistem');
+        if ($this->session->userdata('level')!="a_sistem") {
+            redirect('C_login/index');
+        }
+    }
 
-		if($this->session->userdata('level')!="a_sistem")
-		{
-			redirect(C_login/index);
-		}
-	}
+    public function index()
+    {
+        $data = array();
+        $data['users'] = $this->M_sistem
+                                ->where(['level' => 'mahasiswa'])
+                                ->get();
+        $data['page'] = 'v_sistem/home_s';
+        $this->load->view('v_sistem/template_s', $data);
+    }
 
-	public function index()
-	{
-		$data = array();
-		$data['data'] = $this->M_sistem->data();
-		$data['page'] = 'v_sistem/home_s';
-		$this->load->view('v_sistem/template_s', $data);
-	}
-
-	 public function input()
-	{
-	 	$data['page'] = 'v_sistem/mahasiswa/input';
-		$this->load->view('v_sistem/template_s', $data);
-	}
-	public function simpan()
-	{
-		$data = $_REQUEST;
-		$this->M_sistem->simpan($data);
-		redirect('C_sistem/index');
-	}
-
+    public function input()
+    {
+        $data['page'] = 'v_sistem/mahasiswa/input';
+        $this->load->view('v_sistem/template_s', $data);
+    }
+    public function simpan()
+    {
+        $this->M_sistem->insert($_REQUEST, [
+            'level' => 'mahasiswa'
+        ]);
+        redirect('C_sistem/index');
+    }
 }

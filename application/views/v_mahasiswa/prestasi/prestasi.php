@@ -19,30 +19,31 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                            $n = 1 + $this->uri->segment(3);
-                            if($kirim_prestasi > 0)
-                            {
-                                foreach($data_prestasi as $b)
-                                {
-                                        $bukti = str_replace(" ", "_", $b->bukti);
-                                        echo '<tr>
-                                                <td scope="row">'.$n.'</td>
-                                                <td>'.$b->prestasi.'</td>
-                                                <td>'.$b->waktu.'</td>
-                                                <td>'.$b->penyelenggara.'</td>
-                                                <td>'.$b->atas_nama.'</td>
-                                                <td><img height="50px" src="'.base_url().'assets/upload/'.$bukti.'"></td>
-                                                <td> <a class="btn btn-primary" href ="'.base_url().'C_prestasi/edit_p/'.$b->no.'">Edit</a> <button class="btn btn-danger" data-toggle="modal" data-target="#modalPrestasi" data-id="'.$b->no.'" class="hapus">Hapus</button></td>
-                                            </tr>';
-                                        $n++;
-                                }
-                            }
-                            else
-                            {
-                                    echo '<tr><td colspan="6" align="center" style="color:red">Maaf Data Tidak ditemukan</td></tr>';
-                            }
-                    ?>      
+                <?php foreach ($data_prestasi as $index => $value): ?>
+                    <tr>
+                        <td><?= ++$index ?></td>
+                        <td><?= $value->prestasi ?></td>
+                        <td><?= $value->waktu ?></td>
+                        <td><?= $value->penyelenggara ?></td>
+                        <td><?= $value->atas_nama ?></td>
+                        <td><img height="50px" src="<?= base_url().'assets/upload/'.$value->bukti ?>"></td>
+                        <td>
+                        <div class="dropdown _action">
+                          <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-cog"></i>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                              <a class="btn-block" href="<?= base_url() ?>C_prestasi/edit_p/<?= $value->no ?>"> Edit</a>
+                            </li>
+                            <li class="dropdown-item">
+                              <a class="btn-block" onclick="return confirm('Yakin Mau Hapus?')"
+                              href="<?= base_url() ?>C_prestasi/hapus_p/<?= $value->no ?>"> Hapus</a>
+                            </li>
+                          </ul>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>            
         </table>
         <div>

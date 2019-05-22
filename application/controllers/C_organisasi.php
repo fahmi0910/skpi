@@ -1,132 +1,74 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_organisasi extends CI_Controller {
+class C_organisasi extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_organisasi');
+        $this->load->library('upload_service');
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_organisasi');
+        if ($this->session->userdata('level')!="mahasiswa") {
+            redirect('C_login/index');
+        }
+    }
 
-		if($this->session->userdata('level')!="mahasiswa")
-		{
-			redirect(C_login/index);
-		}
-	}
+    public function organisasi()
+    {
+        $data = array();
+        $data['data_organisasi']=$this->M_organisasi->where(['id_user' => auth()->id])->get();
+        $data['page'] = 'v_mahasiswa/organisasi/organisasi';
+        $this->load->view('v_mahasiswa/template_m', $data);
+    }
+    public function input_o()
+    {
+        $data['page'] = 'v_mahasiswa/organisasi/input_o';
+        $this->load->view('v_mahasiswa/template_m', $data);
+    }
+    public function simpan_o()
+    {
+        $filename = $this->upload_service->photo($_FILES, [
+            'upload_path' => './assets/upload',
+            'allowed_types' => 'gif|jpg|png',
+            'file_name' => date('ymdhis')
+        ]);
 
-	function organisasi()
-	{		
-		$data = array();
-		$data['data_organisasi']=$this->M_organisasi->data_o();
-		$data['kirim_organisasi']=$this->M_organisasi->kirim_o();
-		$data['page'] = 'v_mahasiswa/organisasi/organisasi';
-		$this->load->view('v_mahasiswa/template_m', $data);	
-	}
-	function input_o()
-	{
-		$data['page'] = 'v_mahasiswa/organisasi/input_o';
-		$this->load->view('v_mahasiswa/template_m', $data);
-	}
-	function simpan_o()
-	{
-		// $data = array();
-			// $data['aktif'] = 'active';
-			// $data['page'] = 'masukan';
-			// $this->load->view('template',$data);
-			//upload file
-			$config['file_name'] = $this->input->post('nama', true);
-			$config['upload_path'] = './assets/upload/';
-			$config['allowed_types'] = 'jpg|png';
-			$config['overwrite']= true;
-			
+        $this->M_organisasi->insert($_REQUEST, [
+            'bukti' => $filename,
+            'id_user' => auth()->id
+        ]);
 
-			//setting proses size
-			$config['image_library']='gd2';
-			$config['maintain_ratio']= true;
-			$config['quality'] = '50%';
-			$config['width'] = 600;
-			$config['height'] = 400;
-			
-			$this->load->library('upload', $config);
-			
-			$this->upload->do_upload("bukti");
-			$data = $this->upload->data();
-			
-			$path = $_FILES['bukti']['name'];
-			$ext = pathinfo($path, PATHINFO_EXTENSION);
-			
-			if($ext=='')
-				$file='';
-			else
-				$file = $this->input->post('nama', true).'.'.$ext;
+        redirect('C_organisasi/organisasi');
+    }
+    public function hapus_o($id)
+    {
+        $this->M_organisasi->delete($id, 'no');
+        redirect('C_organisasi/organisasi');
+    }
+    public function edit_o($id)
+    {
+        $data = array();
+        $data['edit_o'] = $this->M_organisasi->find($id, 'no');
 
-			$this->M_organisasi->simpan_o($file);
-			redirect('C_organisasi/organisasi');
-	}
-	function hapus_o()
-	{
-		$this->M_organisasi->hapus_o($this->uri->segment(3));
-		if ($this->db->affected_rows())
-		{
-			$this->session->set_flashdata('info','Berhasil di hapus!');
-		}
-		else
-		{
-			$this->session->set_flashdata('info','Gagal di hapus!');
-			
-		}
-		redirect('C_organisasi/organisasi');
-		
-	}
-	function edit_o()
-	{
-			$data = array();
-			$data['edit_o'] = $this->M_organisasi->edit_o($this->uri->segment(3));
-			
-			
-			// echo $this->db->last_query();exit;
-			$data['page'] = 'v_mahasiswa/organisasi/edit_o';
-			$this->load->view('v_mahasiswa/template_m',$data);
-	}
-		function update_o()
-	{
-		$config['file_name'] = $this->input->post('nama', true);
-		$config['upload_path'] = './assets/upload/';
-		$config['allowed_types'] = 'jpg|png';
-		$config['overwrite']= true;
-		
+        $data['page'] = 'v_mahasiswa/organisasi/edit_o';
+        $this->load->view('v_mahasiswa/template_m', $data);
+    }
+    public function update_o($id)
+    {
+        $filename = $this->upload_service->photo($_FILES, [
+            'upload_path' => './assets/upload',
+            'allowed_types' => 'gif|jpg|png',
+            'file_name' => date('ymdhis')
+        ]);
 
-		//setting proses size
-		$config['image_library']='gd2';
-		$config['maintain_ratio']= true;
-		$config['quality'] = '50%';
-		$config['width'] = 600;
-		$config['height'] = 400;
-		
-		$this->load->library('upload', $config);
-		
-		
-		$path = $_FILES['bukti']['name'];
-		$ext = pathinfo($path, PATHINFO_EXTENSION);
-		
-		if($ext=='')
-				$file='';
-		else
-				$file = $this->input->post('nama', true).'.'.$ext;
+        $this->M_organisasi->updateData($id, $_REQUEST, 'no', [
+            'bukti' => $filename,
+            'id_user' => auth()->id
+        ]);
 
-		//proses resize
-		$config['source_image']='./asset/upload/'.$file;
-		$this->load->library('image_lib', $config);
-		$this->image_lib->resize();
-
-		$this->upload->do_upload("bukti");
-		$data = $this->upload->data();
-
-		$this->M_organisasi->update_o($file);
-		redirect('C_organisasi/organisasi');
-	}
-
-
+        redirect('C_organisasi/organisasi');
+    }
 }
 
 /* End of file c_organisasi.php */

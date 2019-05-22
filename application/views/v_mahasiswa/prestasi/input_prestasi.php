@@ -35,7 +35,7 @@
 				</div>
 				<div class="form-group row">
 					<div class="col-sm-10">
-						<button type="submit" class="btn btn-primary" name="submit" value="kirim">Simpan</button>
+						<button type="submit" class="btn btn-primary" >Simpan</button>
 						<button type="button" onclick="history.back()" class="btn btn-danger">Batal</button>
 					</div>
 				</div>

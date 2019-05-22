@@ -105,8 +105,13 @@ class CI_Model
         return $result->row();
     }
 
-    public function updateData($id, $array, $condition = 'id')
+    public function updateData($id, $array, $condition = 'id', $addcolumn = null)
     {
+        if ($addcolumn) {
+            foreach ($addcolumn as $index => $value) {
+                $array[$index] = $value;
+            }
+        }
         $result = $this->db->where($condition, $id)->update($this->table, $array);
 
         return $result;

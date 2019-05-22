@@ -13,20 +13,18 @@
                     <th>username</th>
                     <th>Password</th>
                     <th>Level</th>
-                    <th>Nama</th>
                 </tr>
             </thead>
             <tbody>
-                    <?php foreach ($data as $index => $value): ?>
-                <tr>
-                    <td><?php echo ++$index ?></td>
-                    <td><?php echo $value->username ?></td>
-                    <td><?php echo $value->password ?></td>
-                    <td><?php echo $value->level ?></td>
-                    <td><?php echo $value->nama ?></td>
-                </tr>
-                    <?php endforeach ?>
-            </tbody>           
+                <?php foreach ($users as $index => $value): ?>
+                    <tr>
+                        <td><?php echo ++$index ?></td>
+                        <td><?php echo $value->username ?></td>
+                        <td><?php echo $value->password ?></td>
+                        <td><?php echo $value->level ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
         </table>
         <div>
             <a class="btn btn-primary" href="<?php echo base_url();?>C_sistem/input" role="button">Tambah</a>
