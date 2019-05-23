@@ -202,7 +202,7 @@ CREATE TABLE `keahlian` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 7;
+AUTO_INCREMENT = 9;
 -- -------------------------------------------------------------
 
 
@@ -246,24 +246,7 @@ CREATE TABLE `magang` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 13;
--- -------------------------------------------------------------
-
-
--- DROP TABLE "mahasiswa" --------------------------------------
-DROP TABLE IF EXISTS `mahasiswa` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "mahasiswa" ------------------------------------
-CREATE TABLE `mahasiswa` ( 
-	`nim` Char( 18 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-	`nama` VarChar( 100 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`status` VarChar( 50 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	PRIMARY KEY ( `nim` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB;
+AUTO_INCREMENT = 14;
 -- -------------------------------------------------------------
 
 
@@ -307,7 +290,7 @@ CREATE TABLE `prestasi` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 27;
+AUTO_INCREMENT = 24;
 -- -------------------------------------------------------------
 
 
@@ -361,26 +344,6 @@ AUTO_INCREMENT = 13;
 -- -------------------------------------------------------------
 
 
--- DROP TABLE "t_mahasiswa" ------------------------------------
-DROP TABLE IF EXISTS `t_mahasiswa` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "t_mahasiswa" ----------------------------------
-CREATE TABLE `t_mahasiswa` ( 
-	`NIM` Char( 17 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-	`Nama` VarChar( 50 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`ttl` Date NULL,
-	`nsi` VarChar( 10 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`masuk` Date NULL,
-	`lulus` Date NULL,
-	PRIMARY KEY ( `NIM` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB;
--- -------------------------------------------------------------
-
-
 -- DROP TABLE "t_user" -----------------------------------------
 DROP TABLE IF EXISTS `t_user` CASCADE;
 -- -------------------------------------------------------------
@@ -402,7 +365,8 @@ AUTO_INCREMENT = 29;
 
 -- Dump data of "identitas_diri" ---------------------------
 INSERT INTO `identitas_diri`(`nim`,`nama`,`ttl`,`no_ijazah`,`masuk`,`lulus`,`gelar`,`id_user`,`id_t_user`,`prodi_id`) VALUES 
-( '1234567', 'Fahmibos', '2019-04-17', '56789', '2016-04-17', '2020-04-18', 's.kom', '21', NULL, '9' );
+( '1234567', 'Fahmibos', '2019-04-17', '56789', '2016-04-17', '2020-04-18', 's.kom', '21', NULL, '9' ),
+( '345678', 'Adit', '1997-04-22', '56789', '0016-04-22', '2018-04-22', 's.kom', '22', NULL, '9' );
 -- ---------------------------------------------------------
 
 
@@ -463,12 +427,6 @@ INSERT INTO `magang`(`no`,`tempat`,`waktu`,`penyelenggara`,`berkas`,`bukti`,`id_
 -- ---------------------------------------------------------
 
 
--- Dump data of "mahasiswa" --------------------------------
-INSERT INTO `mahasiswa`(`nim`,`nama`,`status`) VALUES 
-( '2016.02623.31.1496', 'Fahmi Muhammad', 'terisi' );
--- ---------------------------------------------------------
-
-
 -- Dump data of "organisasi" -------------------------------
 INSERT INTO `organisasi`(`no`,`nama`,`periode`,`divisi`,`berkas`,`bukti`,`id_user`) VALUES 
 ( '11', 'a', 'b', 'b', 'd', 'a.jpg', NULL ),
@@ -499,10 +457,6 @@ INSERT INTO `seminar`(`no`,`nama`,`penyelenggara`,`waktu`,`status`,`bukti`,`id_u
 ( '9', 'bbb', 'sss', '2019-05-13', 'ddd', 'bbb.jpg', NULL ),
 ( '10', 'Fahmibos', 'pppas', '2018-04-21', 'as23', NULL, NULL ),
 ( '12', 'asd', 'asd', '2018-04-21', 'as23', '190522101924.png', '21' );
--- ---------------------------------------------------------
-
-
--- Dump data of "t_mahasiswa" ------------------------------
 -- ---------------------------------------------------------
 
 
@@ -611,13 +565,13 @@ CREATE INDEX `index_id_user4` USING BTREE ON `karya_ilmiah`( `id_user` );
 -- -------------------------------------------------------------
 
 
--- CREATE INDEX "index_keahlian" -------------------------------
-CREATE INDEX `index_keahlian` USING BTREE ON `keahlian`( `keahlian` );
+-- CREATE INDEX "index_id_user2" -------------------------------
+CREATE INDEX `index_id_user2` USING BTREE ON `keahlian`( `id_user` );
 -- -------------------------------------------------------------
 
 
--- CREATE INDEX "index_id_user2" -------------------------------
-CREATE INDEX `index_id_user2` USING BTREE ON `keahlian`( `id_user` );
+-- CREATE INDEX "index_keahlian" -------------------------------
+CREATE INDEX `index_keahlian` USING BTREE ON `keahlian`( `keahlian` );
 -- -------------------------------------------------------------
 
 
