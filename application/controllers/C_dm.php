@@ -6,7 +6,7 @@ class C_dm extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_dm');
+        $this->load->model('M_sistem');
         if ($this->session->userdata('level')!="a_prodi") {
             redirect(C_login/index);
         }
@@ -14,9 +14,14 @@ class C_dm extends CI_Controller
     public function index()
     {
         $data = array();
-        $data['ambil_data']=$this->M_dm->ambil_data();
+        $data['ambil_data']=$this->M_sistem->where(['level' => 'mahasiswa'])->getLeftJoinIdentitasDiri()->get();
         $data['page'] = 'v_prodi/data_mahasiswa';
         $this->load->view('v_prodi/template_p', $data);
+    }
+
+    public function ambil($id)
+    {
+        dd($id);
     }
 }
 

@@ -9,11 +9,17 @@ class M_sistem extends CI_Model
         'password',
         'level'
     ];
-    
+    protected $status;
+
     public function getIdentitasDiri()
     {
         $this->db->join('identitas_diri', 't_user.id = identitas_diri.id_user');
-
+        return $this;
+    }
+    public function getLeftJoinIdentitasDiri()
+    {
+        $this->db->join('identitas_diri', 't_user.id = identitas_diri.id_user', 'left');
+        
         return $this;
     }
 }

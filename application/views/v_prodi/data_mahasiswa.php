@@ -14,23 +14,19 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Status</th>
                     <th scope="col">Aksi</th>
-
                 </tr>
             </thead>
-            <tbody>                
-                   <?php
-                        foreach($ambil_data->result_array() as $i):
-                            $nim=$i['nim'];
-                            $nama=$i['nama'];
-                            $status=$i['status'];
-                    ?>
+            <tbody>
+                <?php foreach ($ambil_data as $index => $value): ?>
                     <tr>
-                        <td><?php echo $nim; ?></td>
-                        <td><?php echo $nama; ?></td>
-                        <td><?php echo $status; ?></td>
-                        <td><a class="btn btn-primary" href="#">ambil</a></td>
+                        <td><?= $value->username ?></td>
+                        <td><?= isset($value->nama) ? $value->nama : 'belum terisi' ?></td>
+                        <td><?= isset($value->id_user) ? 'terisi': 'belum terisi' ?></td>
+                        <td>
+                            <a href="<?= base_url('c_dm/ambil/'.$value->id) ?>" class="btn btn-primary"> ambil</a>
+                        </td>
                     </tr>
-                      <?php endforeach;?>
+                <?php endforeach ?>
             </tbody>
         </table>
 </div>  

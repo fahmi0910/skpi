@@ -7,7 +7,7 @@ class C_prodi extends CI_Controller
     {
         parent::__construct();
         if ($this->session->userdata('level')!="a_prodi") {
-            redirect(C_login/index);
+            redirect('C_login/index');
         }
     }
     public function index()
