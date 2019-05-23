@@ -21,14 +21,17 @@ class C_dm extends CI_Controller
 
     public function ambil($id)
     {
+        $data['mahasiswa'] = $this->M_sistem->getLeftJoinIdentitasDiri()
+                            ->getSeminarUser()
+                            ->getPrestasiUser()
+                            ->getProdiUser()
+                            ->getMagangUser()
+                            ->getKepanitiaanUser()
+                            ->getKaryaIlmiahUser()
+                            ->getKeahlianUser()
+                            ->find($id, 't_user.id');
+        
         $this->load->library('PdfGenerator');
-
-        $data['users']=array(
-            array('firstname'=>'Agung','lastname'=>'Setiawan','email'=>'ag@setiawan.com'),
-            array('firstname'=>'Hauril','lastname'=>'Maulida Nisfar','email'=>'hm@setiawan.com'),
-            array('firstname'=>'Akhtar','lastname'=>'Setiawan','email'=>'akh@setiawan.com'),
-            array('firstname'=>'Gitarja','lastname'=>'Setiawan','email'=>'git@setiawan.com')
-        );
 
         $html = $this->load->view('v_prodi/pdfskpi', $data, true);
 
