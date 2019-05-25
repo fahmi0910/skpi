@@ -1,0 +1,68 @@
+.container{
+	width: 90%;
+	margin: 0px auto;
+}
+
+.ml-3{
+	margin-left: 25px;	
+}
+
+.ml-4{
+	margin-left: 27px;
+}
+
+.mt-3{
+	margin-top: 13px;
+}
+
+.left{
+	width: 48%; display: inline-table; margin-right: 3%
+}
+.right{
+	width: 48%; display: inline-table;
+}
+
+.tbl_identitas {
+
+}
+.tbl_prodi{
+	
+}
+
+.tbl_prestasi{
+
+}
+
+.skpi {
+  text-align: center;
+  font-family: cambria;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: top;
+  padding: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+  width: 100%;
+}
+
+table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  line-height: -1;
+  
+}
+
+td#t1{
+  font-family: cambria;
+  font-size: 12px;
+  text-align:center;
+  vertical-align: top;
+  padding: 5px 10px 10px 10px;
+  font-weight: bold;
+}
+
+td.pb-3{
+	padding-bottom: 15px;
+}
