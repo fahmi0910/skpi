@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Hello, Mahasiswa</title>
+    <title>Hello, Admin Sistem</title>
     <link rel="icon" href="<?php echo base_url(); ?>assets/login/images/unjaya.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -30,28 +30,10 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_mahasiswa/index">Data Diri <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="<?php echo base_url(); ?>C_sistem/index">Data User Mahasiswa <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_prestasi/Prestasi">Prestasi</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_seminar/seminar">Seminar/Pelatihan</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_organisasi/organisasi">Organisasi</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_keahlian/keahlian">Sertifikat Keahlian</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_magang/magang">Magang</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_karya_ilmiah/karya_ilmiah">Karya Ilmiah</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_kepanitiaan/kepanitiaan">Kepanitiaan</a>
+	        <a class="nav-link" href="<?php echo base_url(); ?>C_user_prodi/user_prodi">Data User Admin Prodi</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_login/logout">Logout</a>
