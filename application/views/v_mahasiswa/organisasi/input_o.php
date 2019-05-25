@@ -6,7 +6,13 @@
                 <div class="form-group row">
                  <label for="inputOrganisasi" class="col-sm-2 ">Nama Organisasi </label>
                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nama"required>
+                    <select name="id_organisasi" class="form-control">
+                        <?php foreach ($organisasis as $organisasi): ?>
+                            <option value="<?= $organisasi->id ?>">
+                                <?= $organisasi->nama ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
                  </div> 
                 </div>
                 <div class="form-group row">

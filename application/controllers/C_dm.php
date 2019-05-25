@@ -21,7 +21,20 @@ class C_dm extends CI_Controller
 
     public function ambil($id)
     {
-        $data['mahasiswa'] = $this->M_sistem->getLeftJoinIdentitasDiri()
+        $string = 'identitas_diri.nama AS identitas_diri_nama,
+                    identitas_diri.ttl AS identitas_diri_ttl,
+                    identitas_diri.no_ijazah AS identitas_diri_no_ijazah,
+                    identitas_diri.masuk AS identitas_diri_masuk,
+                    identitas_diri.lulus AS identitas_diri_lulus,
+                    identitas_diri.gelar AS identitas_diri_gelar,
+                    karya_ilmiah.* ,
+                    keahlian.*,
+                    kepanitiaan.*,
+                    magang.*,
+                    prestasi.*,
+                    prodi.*,
+                    seminar.*';
+        $data['mahasiswa'] = $this->M_sistem->getIdentitasDiri()
                             ->getSeminarUser()
                             ->getPrestasiUser()
                             ->getProdiUser()
@@ -29,13 +42,14 @@ class C_dm extends CI_Controller
                             ->getKepanitiaanUser()
                             ->getKaryaIlmiahUser()
                             ->getKeahlianUser()
-                            ->find($id, 't_user.id');
-        
-        $this->load->library('PdfGenerator');
-
-        $html = $this->load->view('v_prodi/pdfskpi', $data, true);
-
-        $this->pdfgenerator->generate($html, 'contoh');
+                            ->find(
+                                $id,
+                                't_user.id',
+                                $string
+                        );
+                            
+        $data['page'] = 'v_prodi/skpi';
+        $this->load->view('v_prodi/template_p', $data);
     }
 }
 

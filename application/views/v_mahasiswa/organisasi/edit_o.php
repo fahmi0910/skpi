@@ -3,11 +3,18 @@
 		<h1>Edit Data Organisasi yang di ikuti</h1>
 	</div>
 	<div class="mt-3">
-		<form action="<?php echo base_url(); ?>C_organisasi/update_o/<?= $edit_o->no ?>" method="post" enctype="multipart/form-data">
+		<form action="<?php echo base_url(); ?>C_organisasi/update_o/<?= $edit_o->id ?>" method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label for="inputpnama" class="col-sm-2 col-form-label">Nama Organisasi</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="nama" value= "<?php echo $edit_o->nama; ?>"required>
+					<select name="id_organisasi" class="form-control">
+                        <?php foreach ($organisasis as $organisasi): ?>
+                            <option value="<?= $organisasi->id ?>" 
+                            	<?= $organisasi->id == $edit_o->id_organisasi ? 'selected' : '' ?>>
+                                <?= $organisasi->nama ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
 				</div>
 			</div>
 

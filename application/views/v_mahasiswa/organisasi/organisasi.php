@@ -34,11 +34,11 @@
                           </button>
                           <ul class="dropdown-menu">
                             <li class="dropdown-item">
-                              <a class="btn-block" href="<?= base_url() ?>C_organisasi/edit_o/<?= $value->no ?>"> Edit</a>
+                              <a class="btn-block" href="<?= base_url() ?>C_organisasi/edit_o/<?= $value->id_user_organisasi ?>"> Edit</a>
                             </li>
                             <li class="dropdown-item">
                               <a class="btn-block" onclick="return confirm('Yakin Mau Hapus?')"
-                              href="<?= base_url() ?>C_organisasi/hapus_o/<?= $value->no ?>"> Hapus</a>
+                              href="<?= base_url() ?>C_organisasi/hapus_o/<?= $value->id_user_organisasi ?>"> Hapus</a>
                             </li>
                           </ul>
                         </td>

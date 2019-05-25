@@ -33,6 +33,17 @@ if (!function_exists('auth')) {
     function auth()
     {
         $ci=& get_instance();
+        
         return $ci->session->userdata('auth')[0];
+    }
+}
+if (!function_exists('user_organisasi')) {
+    function auth_user_organisasi()
+    {
+        $ci=& get_instance();
+        $ci->load->model('M_datadiri');
+        $result = $ci->M_datadiri->where(['id_user' => auth()->id])->first();
+        
+        return $result;
     }
 }

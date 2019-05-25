@@ -13,6 +13,7 @@
                     <th>username</th>
                     <th>Password</th>
                     <th>Level</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,22 @@
                         <td><?php echo $value->username ?></td>
                         <td><?php echo $value->password ?></td>
                         <td><?php echo $value->level ?></td>
+                        <td>
+                            <div class="dropdown _action">
+                              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i>
+                              </button>
+                              <ul class="dropdown-menu">
+                               <li class="dropdown-item">
+                                 <a class="btn-block" href="<?= base_url() ?>C_sistem/edit/<?= $value->id ?>"> Edit</a>
+                               </li>
+                               <li class="dropdown-item">
+                                 <a class="btn-block" onclick="return confirm('Yakin Mau Hapus?')"
+                                 href="<?= base_url() ?>C_sistem/hapus/<?= $value->id ?>"> Hapus</a>
+                               </li>
+                              </ul>
+                            </div>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

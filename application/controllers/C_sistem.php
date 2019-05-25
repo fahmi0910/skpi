@@ -35,4 +35,25 @@ class C_sistem extends CI_Controller
         ]);
         redirect('C_sistem/index');
     }
+
+    public function edit($id)
+    {
+        $data['user'] = $this->M_sistem->find($id);
+        $data['page'] = 'v_sistem/mahasiswa/edit';
+        $this->load->view('v_sistem/template_s', $data);
+    }
+    
+    public function update($id)
+    {
+        $this->M_sistem->updateData($id, $_REQUEST);
+        
+        redirect('C_sistem');
+    }
+
+    public function hapus($id)
+    {
+        $this->M_sistem->delete($id);
+        
+        redirect('C_sistem');
+    }
 }

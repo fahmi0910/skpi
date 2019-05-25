@@ -32,14 +32,14 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>management_prodi/index">Management Prodi<span class="sr-only">(current)</span></a>
 	      </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>management_organisasi/index">Management Organisasi<span class="sr-only">(current)</span></a>
+          </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_prodi/kualifikasi">Kualifikasi dan Hasil</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_dm">Data Mahasiswa</a>
-	      </li>
-	       <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_prodi/skpi">format SKPI</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_login/logout">Logout</a>

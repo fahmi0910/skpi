@@ -97,7 +97,16 @@ class CI_Model
 
         return $result->get()->result();
     }
+    
+    public function first($column = '*')
+    {
+        $result = $this->db->select($column)->from($this->table);
+        if ($this->condition) {
+            $result = $this->db->where($this->condition);
+        }
 
+        return $result->get()->row();
+    }
     public function find($id, $condition  ='id', $column = '*')
     {
         $result = $this->db->select($column)->from($this->table)->where($condition, $id)->get();

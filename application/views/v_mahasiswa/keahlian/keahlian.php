@@ -32,7 +32,7 @@
                           <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-cog"></i>
                           </button>
-                          <ul class="dropdown-menu">
+                          <div class="dropdown-menu">
                             <li class="dropdown-item">
                               <a class="btn-block" href="<?= base_url() ?>C_keahlian/edit/<?= $value->no ?>"> Edit</a>
                             </li>
