@@ -31,7 +31,7 @@ class C_magang extends CI_Controller
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.$_REQUEST['tempat']
+            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['tempat']
         ]);
 
         $this->M_magang->insert($_REQUEST, [
@@ -59,7 +59,7 @@ class C_magang extends CI_Controller
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.$_REQUEST['tempat']
+            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['tempat']
         ]);
 
         $this->M_magang->updateData($id, $_REQUEST, 'no', [

@@ -35,114 +35,6 @@ ENGINE = InnoDB;
 -- -------------------------------------------------------------
 
 
--- DROP TABLE "identitas_diri_karya_ilmiah" --------------------
-DROP TABLE IF EXISTS `identitas_diri_karya_ilmiah` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "identitas_diri_karya_ilmiah" ------------------
-CREATE TABLE `identitas_diri_karya_ilmiah` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`identitas_diri_nim` VarChar( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`no_karya_ilmiah` Int( 11 ) NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
--- DROP TABLE "identitas_diri_kehalian" ------------------------
-DROP TABLE IF EXISTS `identitas_diri_kehalian` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "identitas_diri_kehalian" ----------------------
-CREATE TABLE `identitas_diri_kehalian` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`identitas_diri_nim` VarChar( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`no_keahlian` Int( 11 ) NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
--- DROP TABLE "identitas_diri_kepanitiaan" ---------------------
-DROP TABLE IF EXISTS `identitas_diri_kepanitiaan` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "identitas_diri_kepanitiaan" -------------------
-CREATE TABLE `identitas_diri_kepanitiaan` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`identitas_diri_nim` VarChar( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`no_kepanitiaan` Int( 11 ) NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
--- DROP TABLE "identitas_diri_magang" --------------------------
-DROP TABLE IF EXISTS `identitas_diri_magang` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "identitas_diri_magang" ------------------------
-CREATE TABLE `identitas_diri_magang` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`identitas_diri_nim` VarChar( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`no_magang` Int( 11 ) NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
--- DROP TABLE "identitas_diri_prestasi" ------------------------
-DROP TABLE IF EXISTS `identitas_diri_prestasi` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "identitas_diri_prestasi" ----------------------
-CREATE TABLE `identitas_diri_prestasi` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`identitas_diri_nim` VarChar( 24 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`no_prestasi` Int( 11 ) NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
--- DROP TABLE "identitas_diri_seminar" -------------------------
-DROP TABLE IF EXISTS `identitas_diri_seminar` CASCADE;
--- -------------------------------------------------------------
-
-
--- CREATE TABLE "identitas_diri_seminar" -----------------------
-CREATE TABLE `identitas_diri_seminar` ( 
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
-	`identitas_diri_nim` VarChar( 20 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-	`no_seminar` Int( 11 ) NULL,
-	PRIMARY KEY ( `id` ) )
-CHARACTER SET = latin1
-COLLATE = latin1_swedish_ci
-ENGINE = InnoDB
-AUTO_INCREMENT = 1;
--- -------------------------------------------------------------
-
-
 -- DROP TABLE "karya_ilmiah" -----------------------------------
 DROP TABLE IF EXISTS `karya_ilmiah` CASCADE;
 -- -------------------------------------------------------------
@@ -161,7 +53,7 @@ CREATE TABLE `karya_ilmiah` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 4;
+AUTO_INCREMENT = 5;
 -- -------------------------------------------------------------
 
 
@@ -184,7 +76,7 @@ CREATE TABLE `keahlian` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 10;
+AUTO_INCREMENT = 11;
 -- -------------------------------------------------------------
 
 
@@ -206,7 +98,7 @@ CREATE TABLE `kepanitiaan` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 3;
+AUTO_INCREMENT = 4;
 -- -------------------------------------------------------------
 
 
@@ -228,7 +120,7 @@ CREATE TABLE `magang` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 14;
+AUTO_INCREMENT = 15;
 -- -------------------------------------------------------------
 
 
@@ -267,7 +159,7 @@ CREATE TABLE `prestasi` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 24;
+AUTO_INCREMENT = 27;
 -- -------------------------------------------------------------
 
 
@@ -317,7 +209,7 @@ CREATE TABLE `seminar` (
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 13;
+AUTO_INCREMENT = 15;
 -- -------------------------------------------------------------
 
 
@@ -348,18 +240,18 @@ DROP TABLE IF EXISTS `user_organisasi` CASCADE;
 
 -- CREATE TABLE "user_organisasi" ------------------------------
 CREATE TABLE `user_organisasi` ( 
+	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
 	`periode` VarChar( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
 	`divisi` VarChar( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
 	`berkas` VarChar( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
 	`bukti` VarChar( 255 ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
 	`id_user` Int( 11 ) NOT NULL,
-	`id_organisasi` Int( 255 ) NOT NULL,
-	`id` Int( 11 ) AUTO_INCREMENT NOT NULL,
+	`id_organisasi` Int( 10 ) UNSIGNED NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = latin1
 COLLATE = latin1_swedish_ci
 ENGINE = InnoDB
-AUTO_INCREMENT = 2;
+AUTO_INCREMENT = 4;
 -- -------------------------------------------------------------
 
 
@@ -368,30 +260,6 @@ INSERT INTO `identitas_diri`(`nim`,`nama`,`ttl`,`no_ijazah`,`masuk`,`lulus`,`gel
 ( '1234567', 'Fahmibos', '2019-04-17', '56789', '2016-04-17', '2020-04-18', 's.kom', '21', NULL, '9' ),
 ( '345678', 'Adit', '1997-04-22', '56789', '0016-04-22', '2018-04-22', 's.kom', '22', NULL, '9' ),
 ( '89098', 'Sheena Muhammad Ali Zien', '2018-04-24', '1234', '2016-04-24', '2019-04-24', 's.kom', '29', NULL, '9' );
--- ---------------------------------------------------------
-
-
--- Dump data of "identitas_diri_karya_ilmiah" --------------
--- ---------------------------------------------------------
-
-
--- Dump data of "identitas_diri_kehalian" ------------------
--- ---------------------------------------------------------
-
-
--- Dump data of "identitas_diri_kepanitiaan" ---------------
--- ---------------------------------------------------------
-
-
--- Dump data of "identitas_diri_magang" --------------------
--- ---------------------------------------------------------
-
-
--- Dump data of "identitas_diri_prestasi" ------------------
--- ---------------------------------------------------------
-
-
--- Dump data of "identitas_diri_seminar" -------------------
 -- ---------------------------------------------------------
 
 
@@ -423,15 +291,12 @@ INSERT INTO `kepanitiaan`(`no`,`nama`,`waktu`,`penyelenggara`,`sebagai`,`bukti`,
 INSERT INTO `magang`(`no`,`tempat`,`waktu`,`penyelenggara`,`berkas`,`bukti`,`id_user`) VALUES 
 ( '10', 'oke', 'Juli 2018  - Agustus 2018', 'Unjani YK', 'ada', '1.jpg', NULL ),
 ( '12', '5', '6', '7', '8', '5.jpg', NULL ),
-( '13', 'asdasd', 'asdasd', 'sadsda', 'sadads', '190522105214.png', '21' ),
-( '14', 'asdasd', 'asdasd', 'pppas', 'asdasd', '89098asdasd.png', '29' );
+( '13', 'asdasd', 'asdasd', 'sadsda', 'sadads', NULL, '21' ),
+( '14', 'asdasd', 'asdasd', 'pppas', 'asdasd', '89098190526042620asdasd.png', '29' );
 -- ---------------------------------------------------------
 
 
 -- Dump data of "organisasi" -------------------------------
-INSERT INTO `organisasi`(`id`,`nama`) VALUES 
-( '1', 'organisasi' ),
-( '2', 'mapala' );
 -- ---------------------------------------------------------
 
 
@@ -439,7 +304,9 @@ INSERT INTO `organisasi`(`id`,`nama`) VALUES
 INSERT INTO `prestasi`(`no`,`prestasi`,`waktu`,`penyelenggara`,`atas_nama`,`bukti`,`id_user`) VALUES 
 ( '22', 'oooasd', '2019-05-14', 'ppp', 'lll', 'oooasd.png', '21' ),
 ( '23', 'mmmasdasd', '2019-05-21', 'nnnn', 'bbbb', 'mmmasdasd.png', '21' ),
-( '24', 'mmmasdasd', '2018-04-24', 'pppas', 'asdasd', '89098mmmasdasd.png', '29' );
+( '24', 'mmmasdasd', '2018-04-24', 'pppas', 'asdasd', '89098190526042638mmmasdasd.png', '29' ),
+( '25', 'asdasd', '2018-04-25', 'dfghjk', 'asdasd', '89098190526042646asdasd.png', '29' ),
+( '26', 'mmmasdasd', '2018-04-25', 'pppas', 'asdasd', '89098190526042701mmmasdasd.png', '29' );
 -- ---------------------------------------------------------
 
 
@@ -456,7 +323,8 @@ INSERT INTO `seminar`(`no`,`nama`,`penyelenggara`,`waktu`,`status`,`bukti`,`id_u
 ( '9', 'bbb', 'sss', '2019-05-13', 'ddd', 'bbb.jpg', NULL ),
 ( '10', 'Fahmibos', 'pppas', '2018-04-21', 'as23', NULL, NULL ),
 ( '12', 'asd', 'asd', '2018-04-21', 'as23', '190522101924.png', '21' ),
-( '13', 'Fahmibos', 'pppas', '2018-04-24', 'as23', '89098Fahmibos.png', '29' );
+( '13', 'Fahmibos', 'pppas', '2018-04-24', 'as23', '89098Fahmibos.png', '29' ),
+( '14', 'seminar baru', 'siap', '2018-04-25', 'oke', '89098seminar baru.png', '29' );
 -- ---------------------------------------------------------
 
 
@@ -474,8 +342,6 @@ INSERT INTO `t_user`(`id`,`username`,`password`,`level`,`nama`) VALUES
 
 
 -- Dump data of "user_organisasi" --------------------------
-INSERT INTO `user_organisasi`(`id`,`periode`,`divisi`,`berkas`,`bukti`,`id_user`,`id_organisasi`) VALUES 
-( '2', '2 tahun', 'asdad', 'asdasd', 'mapala89098.png', '29', '2' );
 -- ---------------------------------------------------------
 
 
@@ -491,66 +357,6 @@ CREATE INDEX `id_user` USING BTREE ON `identitas_diri`( `id_user` );
 
 -- CREATE INDEX "prodi_id_index" -------------------------------
 CREATE INDEX `prodi_id_index` USING BTREE ON `identitas_diri`( `prodi_id` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "identitas_diri_nim" ---------------------------
-CREATE INDEX `identitas_diri_nim` USING BTREE ON `identitas_diri_karya_ilmiah`( `identitas_diri_nim` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "no_karya_ilmiah" ------------------------------
-CREATE INDEX `no_karya_ilmiah` USING BTREE ON `identitas_diri_karya_ilmiah`( `no_karya_ilmiah` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "identitas_diri_nim" ---------------------------
-CREATE INDEX `identitas_diri_nim` USING BTREE ON `identitas_diri_kehalian`( `identitas_diri_nim` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "no_keahlian" ----------------------------------
-CREATE INDEX `no_keahlian` USING BTREE ON `identitas_diri_kehalian`( `no_keahlian` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "identitas_diri_nim" ---------------------------
-CREATE INDEX `identitas_diri_nim` USING BTREE ON `identitas_diri_kepanitiaan`( `identitas_diri_nim` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "no_kepanitiaan" -------------------------------
-CREATE INDEX `no_kepanitiaan` USING BTREE ON `identitas_diri_kepanitiaan`( `no_kepanitiaan` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "identitas_diri_nim" ---------------------------
-CREATE INDEX `identitas_diri_nim` USING BTREE ON `identitas_diri_magang`( `identitas_diri_nim` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "no_magang" ------------------------------------
-CREATE INDEX `no_magang` USING BTREE ON `identitas_diri_magang`( `no_magang` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "identitas_diri_nim" ---------------------------
-CREATE INDEX `identitas_diri_nim` USING BTREE ON `identitas_diri_prestasi`( `identitas_diri_nim` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "no_prestasi" ----------------------------------
-CREATE INDEX `no_prestasi` USING BTREE ON `identitas_diri_prestasi`( `no_prestasi` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "identitas_diri_nim" ---------------------------
-CREATE INDEX `identitas_diri_nim` USING BTREE ON `identitas_diri_seminar`( `identitas_diri_nim` );
--- -------------------------------------------------------------
-
-
--- CREATE INDEX "no_seminar" -----------------------------------
-CREATE INDEX `no_seminar` USING BTREE ON `identitas_diri_seminar`( `no_seminar` );
 -- -------------------------------------------------------------
 
 
@@ -589,6 +395,16 @@ CREATE INDEX `index_id_user` USING BTREE ON `seminar`( `id_user` );
 -- -------------------------------------------------------------
 
 
+-- CREATE INDEX "id_organisasi" --------------------------------
+CREATE INDEX `id_organisasi` USING BTREE ON `user_organisasi`( `id_organisasi` );
+-- -------------------------------------------------------------
+
+
+-- CREATE INDEX "id_user" --------------------------------------
+CREATE INDEX `id_user` USING BTREE ON `user_organisasi`( `id_user` );
+-- -------------------------------------------------------------
+
+
 -- CREATE LINK "identitas_diri_ibfk_1" -------------------------
 ALTER TABLE `identitas_diri`
 	ADD CONSTRAINT `identitas_diri_ibfk_1` FOREIGN KEY ( `id_t_user` )
@@ -598,109 +414,82 @@ ALTER TABLE `identitas_diri`
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_karya_ilmiah_ibfk_1" ------------
-ALTER TABLE `identitas_diri_karya_ilmiah`
-	ADD CONSTRAINT `identitas_diri_karya_ilmiah_ibfk_1` FOREIGN KEY ( `identitas_diri_nim` )
-	REFERENCES `identitas_diri`( `nim` )
+-- CREATE LINK "identitas_diri_ibfk_2" -------------------------
+ALTER TABLE `identitas_diri`
+	ADD CONSTRAINT `identitas_diri_ibfk_2` FOREIGN KEY ( `prodi_id` )
+	REFERENCES `prodi`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_karya_ilmiah_ibfk_2" ------------
-ALTER TABLE `identitas_diri_karya_ilmiah`
-	ADD CONSTRAINT `identitas_diri_karya_ilmiah_ibfk_2` FOREIGN KEY ( `no_karya_ilmiah` )
-	REFERENCES `karya_ilmiah`( `no` )
+-- CREATE LINK "karya_ilmiah_ibfk_1" ---------------------------
+ALTER TABLE `karya_ilmiah`
+	ADD CONSTRAINT `karya_ilmiah_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_kehalian_ibfk_1" ----------------
-ALTER TABLE `identitas_diri_kehalian`
-	ADD CONSTRAINT `identitas_diri_kehalian_ibfk_1` FOREIGN KEY ( `identitas_diri_nim` )
-	REFERENCES `identitas_diri`( `nim` )
+-- CREATE LINK "keahlian_ibfk_1" -------------------------------
+ALTER TABLE `keahlian`
+	ADD CONSTRAINT `keahlian_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_kehalian_ibfk_2" ----------------
-ALTER TABLE `identitas_diri_kehalian`
-	ADD CONSTRAINT `identitas_diri_kehalian_ibfk_2` FOREIGN KEY ( `no_keahlian` )
-	REFERENCES `keahlian`( `no` )
+-- CREATE LINK "kepanitiaan_ibfk_1" ----------------------------
+ALTER TABLE `kepanitiaan`
+	ADD CONSTRAINT `kepanitiaan_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_kepanitiaan_ibfk_1" -------------
-ALTER TABLE `identitas_diri_kepanitiaan`
-	ADD CONSTRAINT `identitas_diri_kepanitiaan_ibfk_1` FOREIGN KEY ( `identitas_diri_nim` )
-	REFERENCES `identitas_diri`( `nim` )
+-- CREATE LINK "magang_ibfk_1" ---------------------------------
+ALTER TABLE `magang`
+	ADD CONSTRAINT `magang_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_kepanitiaan_ibfk_2" -------------
-ALTER TABLE `identitas_diri_kepanitiaan`
-	ADD CONSTRAINT `identitas_diri_kepanitiaan_ibfk_2` FOREIGN KEY ( `no_kepanitiaan` )
-	REFERENCES `kepanitiaan`( `no` )
+-- CREATE LINK "prestasi_ibfk_1" -------------------------------
+ALTER TABLE `prestasi`
+	ADD CONSTRAINT `prestasi_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_magang_ibfk_1" ------------------
-ALTER TABLE `identitas_diri_magang`
-	ADD CONSTRAINT `identitas_diri_magang_ibfk_1` FOREIGN KEY ( `identitas_diri_nim` )
-	REFERENCES `identitas_diri`( `nim` )
+-- CREATE LINK "seminar_ibfk_1" --------------------------------
+ALTER TABLE `seminar`
+	ADD CONSTRAINT `seminar_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_magang_ibfk_2" ------------------
-ALTER TABLE `identitas_diri_magang`
-	ADD CONSTRAINT `identitas_diri_magang_ibfk_2` FOREIGN KEY ( `no_magang` )
-	REFERENCES `magang`( `no` )
-	ON DELETE Restrict
-	ON UPDATE Restrict;
--- -------------------------------------------------------------
-
-
--- CREATE LINK "identitas_diri_prestasi_ibfk_1" ----------------
-ALTER TABLE `identitas_diri_prestasi`
-	ADD CONSTRAINT `identitas_diri_prestasi_ibfk_1` FOREIGN KEY ( `identitas_diri_nim` )
-	REFERENCES `identitas_diri`( `nim` )
+-- CREATE LINK "user_organisasi_ibfk_1" ------------------------
+ALTER TABLE `user_organisasi`
+	ADD CONSTRAINT `user_organisasi_ibfk_1` FOREIGN KEY ( `id_user` )
+	REFERENCES `t_user`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------
 
 
--- CREATE LINK "identitas_diri_prestasi_ibfk_2" ----------------
-ALTER TABLE `identitas_diri_prestasi`
-	ADD CONSTRAINT `identitas_diri_prestasi_ibfk_2` FOREIGN KEY ( `no_prestasi` )
-	REFERENCES `prestasi`( `no` )
-	ON DELETE Cascade
-	ON UPDATE Cascade;
--- -------------------------------------------------------------
-
-
--- CREATE LINK "identitas_diri_seminar_ibfk_1" -----------------
-ALTER TABLE `identitas_diri_seminar`
-	ADD CONSTRAINT `identitas_diri_seminar_ibfk_1` FOREIGN KEY ( `identitas_diri_nim` )
-	REFERENCES `identitas_diri`( `nim` )
-	ON DELETE Cascade
-	ON UPDATE Cascade;
--- -------------------------------------------------------------
-
-
--- CREATE LINK "identitas_diri_seminar_ibfk_2" -----------------
-ALTER TABLE `identitas_diri_seminar`
-	ADD CONSTRAINT `identitas_diri_seminar_ibfk_2` FOREIGN KEY ( `no_seminar` )
-	REFERENCES `seminar`( `no` )
+-- CREATE LINK "user_organisasi_ibfk_2" ------------------------
+ALTER TABLE `user_organisasi`
+	ADD CONSTRAINT `user_organisasi_ibfk_2` FOREIGN KEY ( `id_organisasi` )
+	REFERENCES `organisasi`( `id` )
 	ON DELETE Cascade
 	ON UPDATE Cascade;
 -- -------------------------------------------------------------

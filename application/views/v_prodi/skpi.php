@@ -1,7 +1,10 @@
 <div class="mt-3">
 	<div class="container">
-		<div>
+		<div class="col p-0">
 			<strong>I. </strong>
+			<a href="<?= base_url("C_dm/edit_data_diri/$mahasiswa->identitas_diri_nim") ?>" 
+				class="btn btn-primary btn-sm float-right">Edit
+			</a>
 			<strong> INFORMASI TENTANG IDENTITAS DIRI PEMEGANG SKPI <br>
 				<i class="ml-3">Information Identifying The Holder of Diploma Supplement</i>
 			</strong>
@@ -13,7 +16,7 @@
 			    <tr>
 			        <td id="t1" rowspan="2"> <strong>1.1</strong></td>
 			        <td> <strong><h5>NAMA LENGKAP</h5>
-					<i>Full Name</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_nama ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -21,7 +24,7 @@
 			     <tr>
 			        <td id="t1" rowspan="2"> <strong>1.2</strong></td>
 			        <td> <strong><h5>TEMPAT DAN TANGGAL LAHIR  </h5>
-					<i>Place and Date Birth</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_ttl ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -29,7 +32,7 @@
 			     <tr>
 			        <td id="t1" rowspan="2"> <strong>1.3</strong></td>
 			        <td> <strong><h5>NOMOR POKOK MAHASISWA  </h5>
-					<i>Student Identification Number</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_nim ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -37,7 +40,7 @@
 			    <tr>
 			        <td id="t1" rowspan="2"> <strong>1.4</strong></td>
 			        <td> <strong><h5>NOMOR SERI IJAZAH </h5>
-					<i>Certificate Serial Number</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_no_ijazah ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -51,7 +54,7 @@
 			    <tr>
 			        <td id="t1" rowspan="2"> <strong>1.5</strong></td>
 			        <td> <strong><h5>TANGGAL, BULAN, TAHUN MASUK</h5>
-					<i>Date of Acception</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_masuk ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -59,7 +62,7 @@
 			     <tr>
 			        <td id="t1" rowspan="2"> <strong>1.6</strong></td>
 			        <td> <strong><h5>TANGGAL, BULAN, TAHUN LULUS  </h5>
-					<i>Date of Completion</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_lulus ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -67,7 +70,7 @@
 			     <tr>
 			        <td id="t1" rowspan="2"> <strong>1.7</strong></td>
 			        <td> <strong><h5>GELAR DAN SINGKATAN  </h5>
-					<i>Name of Qualification</i></strong></td>
+					<i><?= $mahasiswa->identitas_diri_gelar ?></i></strong></td>
 			    </tr>
 			    <tr>
 			       <td class="pb-3"></td>
@@ -80,6 +83,9 @@
 		<div class="row">
 		    <div class="col-sm-12">	
 		    	<strong>II.</strong>
+		    	<a href="<?= base_url("C_dm/edit_prodi/$mahasiswa->id") ?>" 
+		    		class="btn btn-primary btn-sm float-right">Edit
+		    	</a>
 		    	<strong>INFORMASI TENTANG IDENTITAS PENYELENGGARA PROGRAM <br>
 		    		<i class="ml-3">Information identifying The Award Institution</i>
 		    	</strong>
@@ -90,7 +96,7 @@
 				    <tr>
 				        <td id="t1" rowspan="2"> <strong>2.1</strong></td>
 				        <td> <strong><h5>IZIN PENDIRIAN PERGURUAN TINGGI</h5>
-						<i>Higher Education Establishment Permit</i></strong></td>
+						<i><?= $mahasiswa->izin ?></i></strong></td>
 				    </tr>
 				    <tr>
 				        <td class="pb-3"></td>
@@ -98,7 +104,7 @@
 				    <tr>
 				        <td id="t1" rowspan="2"> <strong>2.2</strong></td>
 				        <td> <strong><h5>NAMA PERGURUAN TINGGI</h5>
-						<i>Awarding Institution</i></strong></td>
+						<i><?= $mahasiswa->prodi_nama ?></i></strong></td>
 				        
 				    </tr>
 				    <tr>
@@ -107,7 +113,7 @@
 				    <tr>
 				        <td id="t1" rowspan="2"> <strong>2.3</strong></td>
 				        <td> <strong><h5>Program Studi</h5>
-						<i>Study Program</i></strong></td>
+						<i><?= $mahasiswa->prodi ?></i></strong></td>
 				        
 				    </tr>
 				    <tr>
@@ -116,7 +122,7 @@
 				    <tr>
 				        <td id="t1" rowspan="2"> <strong>2.4</strong></td>
 				        <td> <strong><h5>JENIS DAN PROGRAM PENDIDIKAN</h5>
-						<i>Type and Program of Education</i></strong></td>
+						<i><?= $mahasiswa->jenis_dan_program ?></i></strong></td>
 				        
 				    </tr>
 				    <tr>
@@ -125,8 +131,7 @@
 				    <tr>
 				        <td id="t1" rowspan="2"> <strong>2.5</strong></td>
 				        <td> <strong><h5>JENJANG KUALIFIKASI SESUAI KKN</h5>
-						<i>Level of Qualification in the National 
-							Qualification Framework</i></strong></td>
+						<i><?= $mahasiswa->jenjang ?></i></strong></td>
 				 
 				    </tr>
 				    <tr>
@@ -135,7 +140,7 @@
 				    <tr>
 				        <td id="t1" rowspan="2"> <strong>2.6</strong></td>
 				        <td> <strong><h5>PERSYARATAN PENERIMAAN</h5>
-						<i>Entry Requirements</i></strong></td>
+						<i><?= $mahasiswa->persyaratan ?></i></strong></td>
 				        
 				    </tr>
 				    <tr>
@@ -151,7 +156,7 @@
 			    	<td id="t1" rowspan="2"> <strong>2.7</strong></td>
 			        <td>
 			          <strong><h5>SERTIFIKAT AKREDITASI PROGRAM STUDI</h5>
-								<i>Certificate of Study Program Accreditation</i></strong>
+								<i><?= $mahasiswa->sertifikat_akreditasi ?></i></strong>
 							</td>
 			 	</tr>
 			  	<tr>
@@ -160,7 +165,7 @@
 			   <tr>
 			        <td id="t1" rowspan="2"> <strong>2.8</strong></td>
 			        <td> <strong><h5>NILAI AKREDITASI PROGRAM STUDI </h5>
-								<i>Value of Study Program Accreditation</i></strong>
+								<i><?= $mahasiswa->akreditasi ?></i></strong>
 							</td>		        
 			    </tr>
 			    <tr>
@@ -169,7 +174,7 @@
 			    <tr>
 			        <td id="t1" rowspan="2"> <strong>2.9</strong></td>
 			        <td> <strong><h5>LAMA STUDI </h5>
-							<i>Length OF Study </i></strong></td>
+							<i><?= $mahasiswa->lama_studi ?> </i></strong></td>
 			    </tr>
 			    <tr>
 			     	<td class="pb-3"></td>   
@@ -177,7 +182,7 @@
 			    <tr>
 			        <td id="t1" rowspan="2"> <strong>2.10</strong></td>
 			        <td> <strong><h5>BAHASA PENGANTAR KULIAH  </h5>
-					<i>Language of Instructio</i></strong></td>
+					<i><?= $mahasiswa->bahasa ?></i></strong></td>
 			    </tr>
 			    <tr>
 			        <td class="pb-3"></td>
@@ -185,7 +190,7 @@
 			   <tr>
 			        <td id="t1" rowspan="2"> <strong>2.11</strong></td>
 			        <td> <strong><h5>SISTEM PENILAIAN</h5>
-					<i>Grading System </i></strong></td>
+					<i><?= $mahasiswa->sistem_penilaian ?> </i></strong></td>
 			    </tr>
 			    <tr>
 			        <td class="pb-3"></td>
@@ -193,7 +198,7 @@
 			    <tr>
 			        <td id="t1" rowspan="2"> <strong>2.12</strong></td>
 			        <td> <strong><h5>JENIS DAN PROGRAM PENDIDIKAN LANJUTAN </h5>
-					<i>Acces to Further Study</i></strong></td>
+					<i><?= $mahasiswa->jenis_dan_program ?></i></strong></td>
 			    </tr>
 			    <tr>
 			        <td class="pb-3"></td>
@@ -222,16 +227,24 @@
 	                    <th>Waktu Kegiatan <br> <i>Period</i></th>
 	                    <th>Penyelenggara <br> <i>Host</i></th>
 	                    <th>Atas nama Pribadi/Instansi <br><i>Individual/Institusional</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_prestasi as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->prestasi ?></td>
+		               	<td><?= $value->waktu ?></td>
+		               	<td><?= $value->penyelenggara ?></td>
+		               	<td><?= $value->atas_nama ?></td>
+		               	<td>
+		               		<a href="<?= base_url("C_dm/edit_prestasi/$value->no") ?>" 
+							class="btn btn-primary btn-sm float-right">Edit
+							</a>
+						</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>
@@ -249,16 +262,24 @@
 	                    <th>Waktu Kegiatan <br> <i>Period</i></th>
 	                    <th>Penyelenggara <br> <i>Institution/Organization</i></th>
 	                    <th>Status <br><i>In a position as</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_seminar as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->nama ?></td>
+		               	<td><?= $value->waktu ?></td>
+		               	<td><?= $value->penyelenggara ?></td>
+		               	<td><?= $value->status ?></td>
+		               	<td>
+		               		<a href="<?= base_url("C_dm/edit_pelatihan/$value->no") ?>" 
+							class="btn btn-primary btn-sm float-right">Edit
+							</a>
+						</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>
@@ -276,16 +297,24 @@
 	                    <th>Masa Bakti <br> <i>Period</i></th>
 	                    <th>Divisi <br> <i>Division</i></th>
 	                    <th>Berkas Pendukung <br><i>Document</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_user_organisasi as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->nama ?></td>
+		               	<td><?= $value->periode ?></td>
+		               	<td><?= $value->divisi ?></td>
+		               	<td><?= $value->berkas ?></td>
+		               	<td>
+		               		<a href="<?= base_url("C_dm/edit_user_organisasi/$value->id") ?>" 
+							class="btn btn-primary btn-sm float-right">Edit
+							</a>
+						</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>
@@ -303,16 +332,24 @@
 	                    <th>Waktu Kegiatan <br> <i>Period</i></th>
 	                    <th>Penyelenggara <br> <i>Host</i></th>
 	                    <th>Ruang Lingkup Keahlian <br><i>Area of Skill</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_keahlian as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->nama ?></td>
+		               	<td><?= $value->waktu ?></td>
+		               	<td><?= $value->penyelenggara ?></td>
+		               	<td><?= $value->ruang ?></td>
+       	               	<td>
+       	               		<a href="<?= base_url("C_dm/edit_keahlian/$value->no") ?>" 
+       						class="btn btn-primary btn-sm float-right">Edit
+       						</a>
+       					</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>
@@ -330,16 +367,24 @@
 	                    <th>Waktu Kegiatan <br> <i>Period</i></th>
 	                    <th>Penyelenggara <br> <i>Institution/Organization</i></th>
 	                    <th>Berkas Pendukung <br><i>Document</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_magang as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->tempat ?></td>
+		               	<td><?= $value->waktu ?></td>
+		               	<td><?= $value->penyelenggara ?></td>
+		               	<td><?= $value->berkas ?></td>
+		               	<td>
+		               		<a href="<?= base_url("C_dm/edit_magang/$value->no") ?>" 
+							class="btn btn-primary btn-sm float-right">Edit
+							</a>
+						</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>
@@ -357,16 +402,24 @@
 	                    <th>Terbit <br> <i>Year of Publication</i></th>
 	                    <th>Penyelenggara <br> <i>Host</i></th>
 	                    <th>Status <br><i>Type and Level of Publication</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_karya_ilmiah as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->judul ?></td>
+		               	<td><?= $value->terbit ?></td>
+		               	<td><?= $value->penyelenggara ?></td>
+		               	<td><?= $value->status ?></td>
+		               	<td>
+		               		<a href="<?= base_url("C_dm/edit_karya_ilmiah/$value->no") ?>" 
+							class="btn btn-primary btn-sm float-right">Edit
+							</a>
+						</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>
@@ -384,16 +437,24 @@
 	                    <th>Waktu Kegiatan <br> <i>Period</i></th>
 	                    <th>Penyelenggara <br> <i>Host</i></th>
 	                    <th>Status <br><i>In a position as</i></th>
+	                    <th></th>
 	                </tr>
 	           </thead>
 	           <tbody>
+	           	<?php foreach ($mahasiswa_kepanitiaan as $index => $value): ?>
 	           		<tr>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
-		               	<td>tes</td>
+		               	<td><?= ++$index ?></td>
+		               	<td><?= $value->nama ?></td>
+		               	<td><?= $value->waktu ?></td>
+		               	<td><?= $value->penyelenggara ?></td>
+		               	<td><?= $value->sebagai ?></td>
+		               	<td>
+		               		<a href="<?= base_url("C_dm/edit_kepanitiaan/$value->no") ?>" 
+							class="btn btn-primary btn-sm float-right">Edit
+							</a>
+						</td>
 	               </tr>  
+	           	<?php endforeach ?>
 	            </tbody>            
         	</table>
 		</div>

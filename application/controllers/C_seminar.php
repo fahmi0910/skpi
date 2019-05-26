@@ -31,7 +31,7 @@ class C_seminar extends CI_Controller
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.$_REQUEST['nama']
+            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['nama']
         ]);
 
         $this->M_seminar->insert($_REQUEST, [
@@ -59,7 +59,7 @@ class C_seminar extends CI_Controller
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
             'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.$_REQUEST['nama']
+            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['nama']
         ]);
 
         $this->M_seminar->updateData($id, $_REQUEST, 'no', [

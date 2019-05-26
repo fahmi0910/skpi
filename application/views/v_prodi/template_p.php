@@ -26,13 +26,13 @@
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
-	      <li class="nav-item active">
+	      <li class="nav-item <?= $this->uri->segment(1) == 'C_prodi' ? 'active' : '' ?>">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_prodi/index">Identitas Penyelenggara <span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item">
+	      <li class="nav-item <?= $this->uri->segment(1) == 'management_prodi' ? 'active' : '' ?>">
 	        <a class="nav-link" href="<?php echo base_url(); ?>management_prodi/index">Management Prodi<span class="sr-only">(current)</span></a>
 	      </li>
-          <li class="nav-item">
+          <li class="nav-item <?= $this->uri->segment(1) == 'management_organisasi' ? 'active' : '' ?>">
             <a class="nav-link" href="<?php echo base_url(); ?>management_organisasi/index">Management Organisasi<span class="sr-only">(current)</span></a>
           </li>
 	      <li class="nav-item">

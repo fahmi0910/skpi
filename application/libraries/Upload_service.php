@@ -18,13 +18,8 @@ class Upload_service
         } else {
             $data = array('upload_data' => $this->ci->upload->data());
         }
-        if (!$file[array_keys($file)[0]]["name"]) {
-            $filename = null;
-        } else {
-            $filename = $config['file_name'].'.'.$extension;
-        }
-
-        return $filename;
+        
+        return $config['file_name'].'.'.$extension;
     }
 }
 
