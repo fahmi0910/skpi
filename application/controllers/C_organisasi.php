@@ -39,8 +39,7 @@ class C_organisasi extends CI_Controller
         $organisasi = $this->M_organisasi->find($_REQUEST['id_organisasi']);
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-             
-            'file_name' => $organisasi->nama.auth_user_organisasi()->nim.
+            'file_name' => $organisasi->nama.auth_user_organisasi()->nim
         ]);
 
         $this->M_user_organisasi->insert($_REQUEST, [
@@ -68,8 +67,7 @@ class C_organisasi extends CI_Controller
         $organisasi = $this->M_organisasi->find($_REQUEST['id_organisasi']);
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-             
-            'file_name' => $organisasi->nama.auth_user_organisasi()->nim. 
+            'file_name' => $organisasi->nama.auth_user_organisasi()->nim
         ]);
 
         $this->M_user_organisasi->updateData($id, $_REQUEST, 'user_organisasi.id', [

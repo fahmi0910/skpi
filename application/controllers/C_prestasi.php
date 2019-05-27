@@ -30,7 +30,6 @@ class C_prestasi extends CI_Controller
     {
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-             
             'file_name' => auth_user_organisasi()->nim.$_REQUEST['prestasi']
         ]);
 
@@ -57,7 +56,6 @@ class C_prestasi extends CI_Controller
     {
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-             
             'file_name' => auth_user_organisasi()->nim.$_REQUEST['prestasi']
         ]);
 
