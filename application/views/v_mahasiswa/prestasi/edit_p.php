@@ -15,7 +15,7 @@
 			<div class="form-group row">
 				<label for="inputWaktu" class="col-sm-2 col-form-label">Waktu</label>
 				<div class="col-sm-10">
-					<input type="date" class="form-control" name="waktu" value= "<?php echo $edit_p->waktu; ?>">
+					<input type="text" class="form-control" name="waktu" value= "<?php echo $edit_p->waktu; ?>">
 				</div>
 			</div>
 

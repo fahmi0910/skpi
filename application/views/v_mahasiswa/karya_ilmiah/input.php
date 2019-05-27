@@ -12,7 +12,7 @@
                 <div class="form-group row">
                  <label for="inputTerbit" class="col-sm-2">Terbit</label>
                  <div class="col-sm-10">
-                    <input type="date" class="form-control" name="terbit" required>
+                    <input type="text" class="form-control" name="terbit" required>
                  </div> 
                 </div>
                 <div class="form-group row">

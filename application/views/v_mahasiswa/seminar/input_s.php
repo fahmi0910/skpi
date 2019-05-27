@@ -12,7 +12,7 @@
 				<div class="form-group row">
 				 <label for="inputWaktu" class="col-sm-2">Waktu Kegiatan</label>
 		   		 <div class="col-sm-10">
-		   		 	<input type="date" class="form-control" name="waktu" required>
+		   		 	<input type="text" class="form-control" name="waktu" required>
 		   		 </div>	
 				</div>
 				<div class="form-group row">

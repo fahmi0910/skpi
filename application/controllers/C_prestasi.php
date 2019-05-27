@@ -30,8 +30,8 @@ class C_prestasi extends CI_Controller
     {
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-            'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['prestasi']
+             
+            'file_name' => auth_user_organisasi()->nim.$_REQUEST['prestasi']
         ]);
 
         $this->M_prestasi->insert($_REQUEST, [
@@ -57,8 +57,8 @@ class C_prestasi extends CI_Controller
     {
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-            'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['prestasi']
+             
+            'file_name' => auth_user_organisasi()->nim.$_REQUEST['prestasi']
         ]);
 
         $this->M_prestasi->updateData($id, $_REQUEST, 'no', [

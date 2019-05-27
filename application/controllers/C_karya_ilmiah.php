@@ -30,8 +30,8 @@ class C_karya_ilmiah extends CI_Controller
     {
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-            'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['judul']
+             
+            'file_name' => auth_user_organisasi()->nim.$_REQUEST['judul']
         ]);
 
         $this->M_karya_ilmiah->insert($_REQUEST, [
@@ -58,8 +58,8 @@ class C_karya_ilmiah extends CI_Controller
     {
         $filename = $this->upload_service->photo($_FILES, [
             'upload_path' => './assets/upload',
-            'allowed_types' => 'gif|jpg|png',
-            'file_name' => auth_user_organisasi()->nim.date('ymdhis').$_REQUEST['judul']
+             
+            'file_name' => auth_user_organisasi()->nim.$_REQUEST['judul']
         ]);
 
         $this->M_karya_ilmiah->updateData($id, $_REQUEST, 'no', [

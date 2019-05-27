@@ -12,7 +12,7 @@
 				<div class="form-group row">
 				 <label for="inputtl" class="col-sm-2">Tempat, Tanggal Lahir</label>
 		   		 <div class="col-sm-10">
-		   		 	<input type="date" class="form-control" value="<?= $data_diri->ttl ?>" name="ttl" required>
+		   		 	<input type="text" class="form-control" value="<?= $data_diri->ttl ?>" name="ttl" required>
 		   		 </div>	
 				</div>
 				<div class="form-group row">

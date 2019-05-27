@@ -30,10 +30,10 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_sistem/index">Data User Mahasiswa <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="<?php echo base_url(); ?>C_user_mhs/index">Data User Mahasiswa <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="<?php echo base_url(); ?>C_user_prodi/user_prodi">Data User Admin Prodi</a>
+	        <a class="nav-link" href="<?php echo base_url(); ?>C_user_prodi/index">Data User Admin Prodi</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?php echo base_url(); ?>C_login/logout">Logout</a>
